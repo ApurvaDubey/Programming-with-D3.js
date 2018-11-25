@@ -1,0 +1,42 @@
+<! DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<script>
+
+let clients = [
+    {
+	name: "John",
+	weight: 86,
+	height: 1.79
+	},
+    {
+	name: "Jane",
+	weight: 66,
+	height: 1.69
+	}	
+	]
+function getBMI(client) {
+	BMI = client.weight/client.height**2
+	return BMI
+	}
+	
+for(let i=0; i < clients.length; i++) {
+	document.write(clients[i].name + "'s BMI: " + getBMI(clients[i]) + "</br>")
+	}
+	
+</script>
+
+
+<h1 style="color:red"> Welcome </h1>
+<p> This is first para </p>
+<img src="x.png"></img>
+</body>
+
+
+</html>

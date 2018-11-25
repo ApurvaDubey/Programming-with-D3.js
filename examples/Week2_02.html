@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+
+<script src="d3.js"></script>
+
+<script>
+
+	let container = d3.select("#container")
+		
+	function write(text){	
+		container.append("div").text(text)                                                       
+	}
+	
+	function showData(data){
+		for(let d of data){
+			write(d.Name+";"+d.Age+";"+d.Weight+";" + d.WA)
+			}
+	}
+
+	d3.csv("clients.csv").then(function (data){
+		container.append("div").html("<h4>data loaded successfully<h4> <br> -------------------------------------")
+		data = data.map(d => {
+			d.WA = d.Weight*2.0
+			return d
+			})
+		data = data.filter(d => {return d.Age >= 10})
+		showData(data)
+	})
+
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+
+<script src="d3.js"></script>
+
+<script>
+
+var employees = [ {name:"Ali", salary: 50000},
+                  {name:"Zoe", salary:75000},
+                  {name:"Jack", salary: 60000},
+                  {name:"Felix", salary: 35000}];
+
+let totalsalary = employees.reduce((cur, prev) => cur + prev.salary, 0)
+
+let container = d3.select("#container")
+
+container.append("div").text(totalsalary)                                                       
+
+</script>
+
+</html>

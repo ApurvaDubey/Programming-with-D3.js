@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+
+<script src="d3.js"></script>
+
+<script>
+
+	let container = d3.select("#container")
+		
+	function write(text){	
+		container.append("div").text(text)                                                       
+	}
+	
+	function showData(data){
+		for(let d of data){
+			writeText = (d.AirlineName+";"+d.SourceAirportCode+";"+d.SourceLatitude+";"+d.DestCode)
+			container.append("div").text(writeText)
+			}
+	}
+
+	d3.csv("routes_FULL.csv").then(function (data){
+		write("data loaded successfully")
+		data = data.filter(d => {return d.SourceLatitude >= 50})
+		data.sort((a,b) => {return d3.ascending(a.SourceAirportCode,b.SourceAirportCode)})
+		showData(data)
+	})
+
+
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<! DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+
+</head>
+
+<body>
+
+
+<div>
+	<h1 id="page-header"> Welcome! Hello World </h1>
+	<button onclick="change_color()">Change color</button>
+</div>
+
+
+<p id="first-para"> This is first para </p>
+<p id="second-para"> This is second para </p>
+
+
+<button onclick="fn_change1()">Change first para</button>
+<button onclick="fn_change2()">Change second para</button>
+
+<ul id="item-list">
+	<li> Item 1 </li>
+	<li> Item 2 </li>
+</ul>
+
+<button onclick="add_new_item()">Add new item</button>
+
+<button onclick="remove_all()">Remove all items</button>
+
+<button onclick="remove_last()">Remove last item</button>
+
+
+</body>
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+<script>
+
+	function fn_change1() {d3.select("#first-para").text("what the hdeck")}
+	function fn_change2() {d3.select("#second-para").text("what the keck, again")}
+	
+	function add_new_item() {
+		let selection = d3.select("#item-list")
+		let cnt = d3.select("#item-list").selectAll("li").size() + 1
+		selection.append("li").text("Item " + cnt)	
+	}
+
+	function remove_all() {
+		d3.select("#item-list").selectAll("li").remove()
+	}
+	
+	function remove_last() {
+		d3.select("#item-list").select("li:last-child").remove()
+	}
+
+	function change_color() {
+		currColor = d3.select("#page-header").style("color")
+		if (currColor === "red") 
+			{d3.select("#page-header").style("color","green")}
+			else {d3.select("#page-header").style("color","red")}
+	}
+	
+</script>
+
+
+</html>
